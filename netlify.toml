@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Increase timeout for serverless functions (26s for free tier, up to 60s for pro)
+[functions]
+  timeout = 26
+
