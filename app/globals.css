@@ -1,0 +1,654 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Zeff Dark Glassmorphism Theme */
+:root {
+  --zeff-bg: #0b1020;
+  --zeff-card: #121a33;
+  --zeff-text: #e6e9f2;
+  --zeff-muted: #9aa3b2;
+  --zeff-accent: #6aa6ff;
+  --zeff-accent2: #7ad1ff;
+  --zeff-danger: #ff6b6b;
+  --zeff-glass-border: rgba(255,255,255,0.08);
+}
+
+/* Base body styling */
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: var(--zeff-bg);
+  min-height: 100vh;
+}
+
+/* Zeff Glass Card */
+.glass-card {
+  @apply bg-zeff-card/80 backdrop-blur-lg border border-zeff-glassBorder rounded-xl-20 shadow-zeff-lg;
+  background-image: var(--glass-gradient);
+  transition: all 0.3s zeff-smooth;
+}
+
+.glass-card:hover {
+  @apply -translate-y-1 shadow-zeff-glow;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(106, 166, 255, 0.2);
+}
+
+/* Zeff Input Field */
+.input-field {
+  @apply w-full px-4 py-3 rounded-md-lg text-zeff-text placeholder-zeff-muted focus:outline-none transition-all duration-300 zeff-smooth;
+  @apply bg-zeff-card/60 backdrop-blur-md border border-zeff-glassBorder;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.input-field:focus {
+  @apply border-zeff-400 ring-2 ring-zeff-400/20;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(106, 166, 255, 0.2),
+    0 0 20px rgba(106, 166, 255, 0.1);
+}
+
+.input-field::placeholder {
+  @apply text-zeff-muted;
+}
+
+/* Zeff Primary Button */
+.btn-primary {
+  @apply w-full font-semibold py-3 px-6 rounded-md-lg transition-all duration-300 zeff-smooth disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  @apply bg-gradient-to-r from-zeff-primary-from to-zeff-primary-to text-white border-0;
+  box-shadow: 
+    0 4px 15px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover:not(:disabled) {
+  @apply -translate-y-0.5;
+  box-shadow: 
+    0 8px 25px rgba(59, 130, 246, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.btn-primary:active:not(:disabled) {
+  @apply translate-y-0;
+}
+
+/* Zeff Secondary Button */
+.btn-secondary {
+  @apply w-full font-semibold py-3 px-6 rounded-md-lg transition-all duration-300 zeff-smooth disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  @apply bg-gradient-to-r from-zeff-secondary-from to-zeff-secondary-to text-white border-0;
+  box-shadow: 
+    0 4px 15px rgba(16, 185, 129, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  @apply -translate-y-0.5;
+  box-shadow: 
+    0 8px 25px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+/* Zeff Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-zeff-primary-from to-zeff-primary-to;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-secondary {
+  @apply bg-gradient-to-r from-zeff-secondary-from to-zeff-secondary-to;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-rating {
+  @apply bg-gradient-to-r from-zeff-rating-from to-zeff-rating-to;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Zeff Status Pills */
+.status-pill {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.status-blue {
+  @apply bg-blue-500/20 text-blue-300 border border-blue-500/30;
+}
+
+.status-green {
+  @apply bg-green-500/20 text-green-300 border border-green-500/30;
+}
+
+.status-red {
+  @apply bg-red-500/20 text-red-300 border border-red-500/30;
+}
+
+.status-amber {
+  @apply bg-amber-500/20 text-amber-300 border border-amber-500/30;
+}
+
+.status-purple {
+  @apply bg-purple-500/20 text-purple-300 border border-purple-500/30;
+}
+
+/* Zeff Cards */
+.zeff-card {
+  @apply p-6 rounded-2xl transition-all duration-300;
+  background: var(--zeff-glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--zeff-glass-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.zeff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Zeff Modal */
+.zeff-modal {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.zeff-modal-content {
+  @apply max-w-md w-full p-6 rounded-2xl;
+  background: var(--zeff-glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--zeff-glass-border);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Zeff Tabs */
+.zeff-tabs {
+  @apply flex space-x-1 p-1 rounded-xl;
+  background: var(--zeff-glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--zeff-glass-border);
+}
+
+.zeff-tab {
+  @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  color: #94a3b8;
+}
+
+.zeff-tab.active {
+  @apply text-white;
+  background: linear-gradient(135deg, var(--zeff-primary-start) 0%, var(--zeff-primary-end) 100%);
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-animation {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .glass-card {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .input-field {
+    @apply py-2.5;
+  }
+  
+  .btn-primary, .btn-secondary {
+    @apply py-2.5;
+  }
+}
+
+/* Error message styling */
+.error-message {
+  @apply bg-red-500/10 border border-red-500/30 text-red-300 p-3 rounded-lg text-sm;
+  backdrop-filter: blur(10px);
+}
+
+.success-message {
+  @apply bg-green-500/10 border border-green-500/30 text-green-300 p-3 rounded-lg text-sm;
+  backdrop-filter: blur(10px);
+}
+
+/* Zeff Background Pattern */
+.zeff-bg {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, var(--zeff-bg-primary) 0%, var(--zeff-bg-secondary) 100%);
+}
+
+/* Zeff Glow Effects */
+.zeff-glow {
+  box-shadow: 0 0 20px var(--zeff-glow);
+}
+
+.zeff-glow-green {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.zeff-glow-amber {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Zeff Login Page Styles */
+.zeff-login-container {
+  min-height: 100vh;
+  background: radial-gradient(1200px 800px at 20% -10%, #1b2650 0, transparent 60%), var(--zeff-bg);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.zeff-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+}
+
+.zeff-login-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--zeff-text);
+}
+
+.zeff-login-sub {
+  margin: 0 0 18px;
+  color: var(--zeff-muted);
+  font-size: 14px;
+}
+
+.zeff-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zeff-label {
+  display: block;
+  font-size: 13px;
+  color: var(--zeff-muted);
+  margin: 14px 0 6px;
+  font-weight: 500;
+}
+
+.zeff-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #0f1630;
+  color: var(--zeff-text);
+  outline: none;
+  transition: border 0.15s ease;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.zeff-input:focus {
+  border-color: var(--zeff-accent);
+}
+
+.zeff-input::placeholder {
+  color: var(--zeff-muted);
+}
+
+/* Password container with toggle */
+.zeff-password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.zeff-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--zeff-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zeff-password-toggle:hover {
+  color: var(--zeff-accent);
+  background-color: rgba(106, 166, 255, 0.1);
+}
+
+.zeff-password-toggle:focus {
+  outline: none;
+  color: var(--zeff-accent);
+  background-color: rgba(106, 166, 255, 0.1);
+}
+
+.zeff-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.zeff-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--zeff-muted);
+}
+
+.zeff-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zeff-accent);
+}
+
+.zeff-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6aa6ff, #7ad1ff);
+  color: #0b1020;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.05s ease, filter 0.2s ease;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.zeff-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.zeff-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.zeff-message {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: none;
+}
+
+.zeff-message-error {
+  background: rgba(255,107,107,.12);
+  border: 1px solid rgba(255,107,107,.35);
+  color: #ffdede;
+  display: block;
+}
+
+.zeff-message-info {
+  background: rgba(106,166,255,.12);
+  border: 1px solid rgba(106,166,255,.35);
+  color: #ddecff;
+  display: block;
+}
+
+.zeff-footer {
+  margin-top: 16px;
+  text-align: center;
+  color: var(--zeff-muted);
+  font-size: 12px;
+}
+
+.zeff-link {
+  color: var(--zeff-accent);
+  text-decoration: none;
+}
+
+.zeff-link:hover {
+  text-decoration: underline;
+}
+
+.zeff-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: zeff-spin 0.8s linear infinite;
+}
+
+@keyframes zeff-spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* Zeff Welcome Page Styles */
+.zeff-navbar {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 16px 0;
+}
+
+.zeff-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zeff-header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.zeff-header-brand:hover {
+  transform: translateY(-1px);
+}
+
+.zeff-brand-text {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6aa6ff, #7ad1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.zeff-brand-tagline {
+  font-size: 12px;
+  color: var(--zeff-muted);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  line-height: 1.2;
+}
+
+.zeff-nav-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  line-height: 1;
+}
+
+.zeff-nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6aa6ff, #7ad1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+.zeff-nav-subtitle {
+  font-size: 12px;
+  color: var(--zeff-muted);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  margin-top: -2px;
+}
+
+.zeff-signout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #6aa6ff, #7ad1ff);
+  color: #0b1020;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.05s ease, filter 0.2s ease;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.zeff-signout-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.zeff-signout-btn:active {
+  transform: translateY(0);
+}
+
+.zeff-welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.zeff-welcome-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--zeff-text);
+  margin: 0 0 16px 0;
+  background: linear-gradient(135deg, #6aa6ff, #7ad1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.zeff-welcome-sub {
+  font-size: 18px;
+  color: var(--zeff-muted);
+  margin: 0;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .zeff-nav-content {
+    padding: 0 16px;
+  }
+  
+  .zeff-nav-title {
+    font-size: 20px;
+  }
+  
+  .zeff-brand-text {
+    font-size: 20px;
+  }
+  
+  .zeff-brand-tagline {
+    font-size: 11px;
+  }
+  
+  .zeff-nav-title {
+    font-size: 20px;
+  }
+  
+  .zeff-nav-subtitle {
+    font-size: 11px;
+  }
+  
+  .zeff-welcome-title {
+    font-size: 36px;
+  }
+  
+  .zeff-welcome-sub {
+    font-size: 16px;
+  }
+}
